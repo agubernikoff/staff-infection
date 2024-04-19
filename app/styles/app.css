@@ -497,6 +497,9 @@ aside li {
   margin-top: 1.25%;
   font-size: 0.75rem;
   font-family: 'staff-font';
+  @media (max-width: 45em) {
+    width: 95%;
+  }
 }
 .price-title > p {
   font-size: 0.75rem;
@@ -508,6 +511,9 @@ aside li {
   text-align: center;
   font-size: 0.75rem;
   font-family: 'staff-font';
+  @media (max-width: 45em) {
+    width: 95%;
+  }
 }
 .product-details > p {
   margin-bottom: 3%;
@@ -519,6 +525,9 @@ aside li {
   font-family: 'staff-font';
   width: 26.25%;
   margin: auto;
+  @media (max-width: 45em) {
+    width: 95%;
+  }
 }
 .form-row {
   margin-bottom: 4%;
