@@ -66,7 +66,7 @@ function Form() {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zipCode, setZipCode] = useState('');
-  const [email, setemail] = useState('');
+  const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
   // Function to handle form submission
@@ -118,38 +118,40 @@ function Form() {
             required
           />
         </div>
-        <div className="form-row">
-          <input
-            type="text"
-            id="city"
-            name="city"
-            placeholder="City"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-row">
-          <input
-            type="text"
-            id="state"
-            name="state"
-            placeholder="State"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-row">
-          <input
-            type="text"
-            id="zipCode"
-            name="zipCode"
-            placeholder="Zip Code"
-            value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
-            required
-          />
+        <div className="state-zip-city">
+          <div className="form-row">
+            <input
+              type="text"
+              id="city"
+              name="city"
+              placeholder="City"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-row">
+            <input
+              type="text"
+              id="state"
+              name="state"
+              placeholder="State"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-row">
+            <input
+              type="text"
+              id="zipCode"
+              name="zipCode"
+              placeholder="Zip Code"
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value)}
+              required
+            />
+          </div>
         </div>
         <div className="form-row">
           <input

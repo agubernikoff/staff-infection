@@ -518,6 +518,20 @@ aside li {
   width: 26.25%;
   margin: auto;
 }
+.form-row {
+  margin-bottom: 3%;
+  border-bottom: 1.75px solid black;
+  border-right: 1.75px solid black;
+  border-radius: 0;
+}
+input {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+.state-zip-city {
+  display: flex;
+  gap: 1rem;
+}
 
 button {
   padding: 8px 20px;
