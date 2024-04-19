@@ -520,14 +520,10 @@ aside li {
 }
 .form-row {
   margin-bottom: 4%;
-  border-bottom: 1.75px solid black;
-  border-right: 1.75px solid black;
+
   border-radius: 0;
 }
-input {
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
-}
+
 .state-zip-city {
   display: flex;
   gap: 1rem;
@@ -546,8 +542,13 @@ button {
 }
 
 input {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
   width: 100%;
   box-sizing: border-box;
+  border-radius: none;
+  border: 1px solid black !important;
+  padding-left: 10px;
 }
 
 input::placeholder {
