@@ -490,7 +490,7 @@ aside li {
   width: 26.25%;
   margin: auto;
   @media (max-width: 45em) {
-    width: 65%;
+    width: 95%;
   }
 }
 .price-title {
