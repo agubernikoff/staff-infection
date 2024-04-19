@@ -176,7 +176,7 @@ function Form() {
           />
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Reserve</button>
       </form>
     </div>
   );
