@@ -31,7 +31,9 @@ export default function Homepage() {
     <div className="home">
       {/* <FeaturedCollection collection={data.featuredCollection} /> */}
       {/* <RecommendedProducts products={data.recommendedProducts} /> */}
-      <img src={sweater} />
+      <div className="prod-img">
+        <img src={sweater} />
+      </div>
       <div className="price-title">
         <p>STAFF x Lucesca Hoodie</p>
         <p>$150.00 USD</p>
@@ -58,25 +60,19 @@ export default function Homepage() {
  */
 
 function Form() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [address, setAddress] = useState('');
+  const [apartment, setApartment] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zipCode, setZipCode] = useState('');
+  const [email, setemail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     // Process form data here (e.g., send it to backend)
-    console.log({
-      firstName,
-      lastName,
-      email,
-      city,
-      state,
-      zipCode,
-    });
     // Reset form fields after submission if needed
     // setFirstName('');
     // setLastName('');
@@ -86,7 +82,102 @@ function Form() {
     // setZipCode('');
   };
 
-  return <div className="form-container"></div>;
+  return (
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <div className="form-row">
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <input
+            type="text"
+            id="address"
+            name="address"
+            placeholder="Address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <input
+            type="text"
+            id="apartment"
+            name="apartment"
+            placeholder="Apartment"
+            value={apartment}
+            onChange={(e) => setApartment(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <input
+            type="text"
+            id="city"
+            name="city"
+            placeholder="City"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <input
+            type="text"
+            id="state"
+            name="state"
+            placeholder="State"
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <input
+            type="text"
+            id="zipCode"
+            name="zipCode"
+            placeholder="Zip Code"
+            value={zipCode}
+            onChange={(e) => setZipCode(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <input
+            type="text"
+            id="phoneNumber"
+            name="phoneNumber"
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+          />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }
 
 function FeaturedCollection({collection}) {
