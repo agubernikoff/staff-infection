@@ -2,6 +2,8 @@ import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
+import sweater from '../assets/sweater.png';
+import React, {useState} from 'react';
 
 /**
  * @type {MetaFunction}
@@ -27,8 +29,24 @@ export default function Homepage() {
   const data = useLoaderData();
   return (
     <div className="home">
-      <FeaturedCollection collection={data.featuredCollection} />
-      <RecommendedProducts products={data.recommendedProducts} />
+      {/* <FeaturedCollection collection={data.featuredCollection} /> */}
+      {/* <RecommendedProducts products={data.recommendedProducts} /> */}
+      <img src={sweater} />
+      <div className="price-title">
+        <p>STAFF x Lucesca Hoodie</p>
+        <p>$150.00 USD</p>
+      </div>
+      <div className="product-details">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+          consectetur finibus nisi, sed placerat felis egestas in.
+        </p>
+        <p>
+          100% GRS-Certified Recycled Cotton • Backless Embroidery
+          • Non-interfaced Collar and Placket • Made in USA
+        </p>
+      </div>
+      <Form />
     </div>
   );
 }
@@ -38,6 +56,39 @@ export default function Homepage() {
  *   collection: FeaturedCollectionFragment;
  * }}
  */
+
+function Form() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zipCode, setZipCode] = useState('');
+
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Process form data here (e.g., send it to backend)
+    console.log({
+      firstName,
+      lastName,
+      email,
+      city,
+      state,
+      zipCode,
+    });
+    // Reset form fields after submission if needed
+    // setFirstName('');
+    // setLastName('');
+    // setEmail('');
+    // setCity('');
+    // setState('');
+    // setZipCode('');
+  };
+
+  return <div className="form-container"></div>;
+}
+
 function FeaturedCollection({collection}) {
   if (!collection) return null;
   const image = collection?.image;
