@@ -481,6 +481,7 @@ aside li {
   align-items: center;
   font-size: 0.75rem;
   font-family: 'staff-font';
+  padding-bottom: 1.5%;
 }
 .prod-img {
   display: flex;
@@ -542,8 +543,8 @@ button {
 }
 
 input {
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
   width: 100%;
   box-sizing: border-box;
   border-radius: none;

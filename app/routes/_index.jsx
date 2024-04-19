@@ -44,16 +44,17 @@ export default function Homepage() {
       </div>
       <div className="price-title">
         <p>STAFF x Lucesca Hoodie</p>
-        <p>$150.00 USD</p>
+        <p>$85.00 USD</p>
       </div>
       <div className="product-details">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-          consectetur finibus nisi, sed placerat felis egestas in.
+          Staff is the working class of our favorite places, brands,
+          restaurants, and events. First we are proud to highlight Lucesca -
+          celebrating the beauty of returning home.
         </p>
         <p>
-          100% GRS-Certified Recycled Cotton • Backless Embroidery
-          • Non-interfaced Collar and Placket • Made in USA
+          Heavyweight (13 oz.) Hoodie • Everywhere’s 100% GRS-Certified Recycled
+          Cotton
         </p>
       </div>
       <Form
