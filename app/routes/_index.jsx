@@ -56,21 +56,10 @@ export default function Homepage() {
           • Non-interfaced Collar and Placket • Made in USA
         </p>
       </div>
-      <div className="toggle-container">
-        <div
-          className={`circle ${
-            selectedColor === 'black' ? 'selected-black' : 'black'
-          }`}
-          onClick={() => handleCircleClick('black')}
-        ></div>
-        <div
-          className={`circle ${
-            selectedColor === 'white' ? 'selected-white' : 'white'
-          }`}
-          onClick={() => handleCircleClick('white')}
-        ></div>
-      </div>
-      <Form />
+      <Form
+        selectedColor={selectedColor}
+        handleCircleClick={handleCircleClick}
+      />
     </div>
   );
 }
@@ -81,7 +70,7 @@ export default function Homepage() {
  * }}
  */
 
-function Form() {
+function Form({selectedColor, handleCircleClick}) {
   const [fullName, setFullName] = useState('');
   const [address, setAddress] = useState('');
   const [apartment, setApartment] = useState('');
@@ -90,23 +79,76 @@ function Form() {
   const [zipCode, setZipCode] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [selectedSize, setSelectedSize] = useState('');
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size === selectedSize ? '' : size);
+  };
 
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Prepare form data
+    const formData = {
+      fullName,
+      address,
+      apartment,
+      city,
+      state,
+      zipCode,
+      email,
+      phoneNumber,
+      selectedSize,
+      selectedColor,
+    };
+    console.log(formData); // For testing: Log form data
+
     // Process form data here (e.g., send it to backend)
     // Reset form fields after submission if needed
-    // setFirstName('');
-    // setLastName('');
-    // setEmail('');
+    // setFullName('');
+    // setAddress('');
+    // setApartment('');
     // setCity('');
     // setState('');
     // setZipCode('');
+    // setEmail('');
+    // setPhoneNumber('');
+    // setSelectedSize('');
+    // setSelectedColor(null)
   };
 
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
+        <div className="toggle-container">
+          <div
+            className={`circle ${
+              selectedColor === 'black' ? 'selected-black' : 'black'
+            }`}
+            onClick={() => handleCircleClick('black')}
+          ></div>
+          <div
+            className={`circle ${
+              selectedColor === 'white' ? 'selected-white' : 'white'
+            }`}
+            onClick={() => handleCircleClick('white')}
+          ></div>
+        </div>
+        <div className="form-row size-selector">
+          {/* Size Buttons */}
+          {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
+            <button
+              key={size}
+              className={`size-button ${
+                selectedSize === size ? 'selected' : ''
+              }`}
+              onClick={() => handleSizeClick(size)}
+              type="button" // Prevent button from submitting the form
+            >
+              {size}
+            </button>
+          ))}
+        </div>
         <div className="form-row">
           <input
             type="text"

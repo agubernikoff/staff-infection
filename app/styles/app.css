@@ -556,7 +556,6 @@ input::placeholder {
   font-family: 'staff-font';
   /* Box shadow for the right side */
 }
-
 .toggle-container {
   display: flex;
   justify-content: center;
@@ -595,4 +594,30 @@ input::placeholder {
 .image-container img {
   max-width: 200px;
   height: auto;
+}
+
+.form-row.size-selector {
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: auto;
+  gap: 0.5rem;
+  margin-bottom: 5%;
+}
+
+.size-button {
+  display: block;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 60px;
+  text-align: center;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.size-button.selected {
+  background-color: black;
+  color: white;
 }
