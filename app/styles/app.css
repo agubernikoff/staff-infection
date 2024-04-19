@@ -489,6 +489,9 @@ aside li {
 .prod-img > img {
   width: 26.25%;
   margin: auto;
+  @media (max-width: 45em) {
+    width: 65%;
+  }
 }
 .price-title {
   text-align: center;
