@@ -137,7 +137,7 @@ function Form({selectedColor, handleCircleClick}) {
         </div>
         <div className="form-row size-selector">
           {/* Size Buttons */}
-          {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
+          {['M', 'L', 'XL'].map((size) => (
             <button
               key={size}
               className={`size-button ${
