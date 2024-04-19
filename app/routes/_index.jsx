@@ -3,6 +3,7 @@ import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 import sweater from '../assets/sweater.png';
+import sweater2 from '../assets/sweater2.png';
 import React, {useState} from 'react';
 
 /**
@@ -27,12 +28,19 @@ export async function loader({context}) {
 export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
+  const [selectedColor, setSelectedColor] = useState(null); // State to track selected color
+
+  // Function to handle circle click
+  const handleCircleClick = (color) => {
+    setSelectedColor(color === selectedColor ? selectedColor : color); // Toggle selected color
+  };
+
   return (
     <div className="home">
       {/* <FeaturedCollection collection={data.featuredCollection} /> */}
       {/* <RecommendedProducts products={data.recommendedProducts} /> */}
       <div className="prod-img">
-        <img src={sweater} />
+        <img src={selectedColor == 'black' ? sweater : sweater2} />
       </div>
       <div className="price-title">
         <p>STAFF x Lucesca Hoodie</p>
@@ -47,6 +55,20 @@ export default function Homepage() {
           100% GRS-Certified Recycled Cotton • Backless Embroidery
           • Non-interfaced Collar and Placket • Made in USA
         </p>
+      </div>
+      <div className="toggle-container">
+        <div
+          className={`circle ${
+            selectedColor === 'black' ? 'selected-black' : 'black'
+          }`}
+          onClick={() => handleCircleClick('black')}
+        ></div>
+        <div
+          className={`circle ${
+            selectedColor === 'white' ? 'selected-white' : 'white'
+          }`}
+          onClick={() => handleCircleClick('white')}
+        ></div>
       </div>
       <Form />
     </div>

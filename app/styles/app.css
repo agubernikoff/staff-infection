@@ -556,3 +556,43 @@ input::placeholder {
   font-family: 'staff-font';
   /* Box shadow for the right side */
 }
+
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.circle.selected-black {
+  background-color: black;
+}
+.circle.selected-white {
+  background-color: #f3f2e5;
+}
+
+.circle.white {
+  background-color: #f3f2e5;
+}
+
+.circle.black {
+  background-color: black;
+}
+
+.image-container {
+  margin-top: 20px;
+}
+
+.image-container img {
+  max-width: 200px;
+  height: auto;
+}
