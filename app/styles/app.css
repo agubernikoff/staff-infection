@@ -478,6 +478,9 @@ aside li {
   font-size: 0.75rem;
   font-family: 'staff-font';
   padding-bottom: 1.5%;
+  @media (max-width: 45em) {
+    margin-top: 3%;
+  }
 }
 .prod-img {
   display: flex;
@@ -499,6 +502,7 @@ aside li {
   font-family: 'staff-font';
   @media (max-width: 45em) {
     width: 95%;
+    margin-top: 3%;
   }
 }
 .price-title > p {
