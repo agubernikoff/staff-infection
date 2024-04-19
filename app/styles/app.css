@@ -473,7 +473,7 @@ aside li {
 }
 
 .home {
-  padding-top: 3%;
+  padding-top: 2.5%;
   width: 100%;
   margin: auto;
   display: flex;
@@ -484,7 +484,7 @@ aside li {
   font-family: 'staff-font';
 }
 .home > img {
-  width: 28%;
+  width: 26.25%;
   margin: auto;
 }
 .price-title {
@@ -511,22 +511,6 @@ aside li {
 }
 
 .form-container {
-  max-width: 400px;
-  margin: auto;
-  font-family: 'staff-font';
-}
-
-.form-row {
-  margin-bottom: 20px;
-}
-
-.equal-width {
-  display: flex;
-}
-
-.equal-width input {
-  flex: 1;
-  margin-right: 10px;
   font-family: 'staff-font';
 }
 
