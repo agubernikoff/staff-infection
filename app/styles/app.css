@@ -644,3 +644,32 @@ input::placeholder {
   background-color: black;
   color: white;
 }
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 0.75rem;
+  font-family: 'staff-font';
+  width: 25%;
+  margin: auto;
+  @media (max-width: 45em) {
+    width: 95%;
+  }
+}
+.login-container > p,
+.login-container > button,
+.login-container > input {
+  font-size: 0.75rem;
+  font-family: 'staff-font';
+}
+
+.login-container input {
+  margin-bottom: 3%;
+  margin-top: 3%;
+  font-size: 0.75rem;
+  font-family: 'staff-font';
+  text-align: center;
+}

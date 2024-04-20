@@ -28,40 +28,68 @@ export async function loader({context}) {
 export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
-  const [selectedColor, setSelectedColor] = useState(null); // State to track selected color
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [password, setPassword] = useState('');
+  const [authenticated, setAuthenticated] = useState(false);
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleLogin = () => {
+    if (password.trim().toLowerCase() === 'friends&family') {
+      setAuthenticated(true);
+    } else {
+      alert('Incorrect password. Please try again.');
+    }
+  };
 
   // Function to handle circle click
   const handleCircleClick = (color) => {
-    setSelectedColor(color === selectedColor ? selectedColor : color); // Toggle selected color
+    setSelectedColor(color === selectedColor ? selectedColor : color);
   };
 
   return (
-    <div className="home">
-      {/* <FeaturedCollection collection={data.featuredCollection} /> */}
-      {/* <RecommendedProducts products={data.recommendedProducts} /> */}
-      <div className="prod-img">
-        <img src={selectedColor == 'black' ? sweater : sweater2} />
-      </div>
-      <div className="price-title">
-        <p>STAFF x Lucesca Hoodie</p>
-        <p>$85.00 USD</p>
-      </div>
-      <div className="product-details">
-        <p>
-          Staff is the working class of our favorite places, brands,
-          restaurants, and events. First we are proud to highlight Lucesca -
-          celebrating the beauty of returning home.
-        </p>
-        <p>
-          Heavyweight (13 oz.) Hoodie • Everywhere’s 100% GRS-Certified Recycled
-          Cotton
-        </p>
-      </div>
-      <Form
-        selectedColor={selectedColor}
-        handleCircleClick={handleCircleClick}
-      />
-    </div>
+    <>
+      {!authenticated ? (
+        <div className="login-container">
+          <p>Enter Password:</p>
+          <input
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          <button onClick={handleLogin}>Submit</button>
+        </div>
+      ) : (
+        <div className="home">
+          {/* <FeaturedCollection collection={data.featuredCollection} /> */}
+          {/* <RecommendedProducts products={data.recommendedProducts} /> */}
+          <div className="prod-img">
+            <img src={selectedColor == 'black' ? sweater : sweater2} />
+          </div>
+          <div className="price-title">
+            <p>STAFF x Lucesca Hoodie</p>
+            <p>$85.00 USD</p>
+          </div>
+          <div className="product-details">
+            <p>
+              Staff is the working class of our favorite places, brands,
+              restaurants, and events. First we are proud to highlight Lucesca -
+              celebrating the beauty of returning home.
+            </p>
+            <p>
+              Heavyweight (13 oz.) Hoodie • Everywhere’s 100% GRS-Certified
+              Recycled Cotton
+            </p>
+          </div>
+          <Form
+            selectedColor={selectedColor}
+            handleCircleClick={handleCircleClick}
+          />
+        </div>
+      )}
+    </>
   );
 }
 
