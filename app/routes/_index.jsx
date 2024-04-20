@@ -4,7 +4,7 @@ import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 import sweater from '../assets/sweater.png';
 import sweater2 from '../assets/sweater2.png';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 /**
  * @type {MetaFunction}
@@ -31,6 +31,18 @@ export default function Homepage() {
   const [selectedColor, setSelectedColor] = useState(null);
   const [password, setPassword] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    if (!authenticated) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [authenticated]);
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
