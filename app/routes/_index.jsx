@@ -52,6 +52,7 @@ export default function Homepage() {
     // event.preventDefault();
     if (password.trim().toLowerCase() === 'f') {
       setAuthenticated(true);
+      window.scrollTo({top: 0, behavior: 'smooth'});
     } else {
       alert('Incorrect password. Please try again.');
     }
