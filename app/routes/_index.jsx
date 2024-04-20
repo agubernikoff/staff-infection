@@ -50,7 +50,7 @@ export default function Homepage() {
 
   const handleLogin = (event) => {
     // event.preventDefault();
-    if (password.trim().toLowerCase() === 'f') {
+    if (password.trim().toLowerCase() === 'friends&family') {
       setAuthenticated(true);
       window.scrollTo({top: 0, behavior: 'smooth'});
     } else {
