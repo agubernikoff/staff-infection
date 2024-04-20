@@ -36,13 +36,10 @@ export default function Homepage() {
     setPassword(event.target.value);
   };
 
-  const handleLogin = () => {
-    event.preventDefault();
-    if (password.trim().toLowerCase() === 'friends&family') {
+  const handleLogin = (event) => {
+    // event.preventDefault();
+    if (password.trim().toLowerCase() === 'f') {
       setAuthenticated(true);
-      document
-        .querySelector('meta[name="viewport"]')
-        .setAttribute('content', 'width=device-width, initial-scale=1.0');
     } else {
       alert('Incorrect password. Please try again.');
     }

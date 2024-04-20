@@ -672,4 +672,7 @@ input::placeholder {
   font-size: 0.75rem;
   font-family: 'staff-font';
   text-align: center;
+  @media (max-width: 45em) {
+    font-size: 1rem;
+  }
 }
