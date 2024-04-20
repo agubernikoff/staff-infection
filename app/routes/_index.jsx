@@ -39,6 +39,9 @@ export default function Homepage() {
   const handleLogin = () => {
     if (password.trim().toLowerCase() === 'friends&family') {
       setAuthenticated(true);
+      document
+        .querySelector('meta[name="viewport"]')
+        .setAttribute('content', 'width=device-width, initial-scale=1.0');
     } else {
       alert('Incorrect password. Please try again.');
     }
