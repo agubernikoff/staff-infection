@@ -37,6 +37,7 @@ export default function Homepage() {
   };
 
   const handleLogin = () => {
+    event.preventDefault();
     if (password.trim().toLowerCase() === 'friends&family') {
       setAuthenticated(true);
       document
