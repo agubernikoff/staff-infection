@@ -676,7 +676,11 @@ input::placeholder {
     font-size: 1rem;
   }
 }
-
+@media (max-width: 45em) {
+  input {
+    font-size: 1rem;
+  }
+}
 body.disable-scroll {
   overflow: hidden; /* Disable scroll */
 }
