@@ -1,10 +1,10 @@
 import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link} from '@remix-run/react';
-import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 import sweater from '../assets/sweater.png';
 import sweater2 from '../assets/sweater2.png';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Suspense} from 'react';
+import emailjs from '@emailjs/browser';
 
 /**
  * @type {MetaFunction}
@@ -21,8 +21,14 @@ export async function loader({context}) {
   const {collections} = await storefront.query(FEATURED_COLLECTION_QUERY);
   const featuredCollection = collections.nodes[0];
   const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
-
-  return defer({featuredCollection, recommendedProducts});
+  const publicKey = context.env.EMAIL_JS_PUBLIC_KEY;
+  const privateKey = context.env.EMAIL_JS_PRIVATE_KEY;
+  return defer({
+    featuredCollection,
+    recommendedProducts,
+    publicKey,
+    privateKey,
+  });
 }
 
 export default function Homepage() {
@@ -31,6 +37,7 @@ export default function Homepage() {
   const [selectedColor, setSelectedColor] = useState(null);
   const [password, setPassword] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     if (!authenticated) {
@@ -59,7 +66,7 @@ export default function Homepage() {
 
   const handleLogin = (event) => {
     // event.preventDefault();
-    if (password.trim().toLowerCase() === 'friends&family') {
+    if (password.trim() === 'Friends&Family') {
       setAuthenticated(true);
       window.scrollTo({top: 0, behavior: 'smooth'});
     } else {
@@ -84,10 +91,27 @@ export default function Homepage() {
           />
           <button onClick={handleLogin}>Submit</button>
         </div>
+      ) : submitted ? (
+        <div className="login-container">
+          <div className="product-details">
+            <p>
+              Thank you for your participation in STAFF’s pre-launch.
+              <br />
+              You’re order is pending.
+            </p>
+            <p>
+              Upon confirmation, we will send you a request on venmo to complete
+              your purchase. <br />
+              Thank you.
+            </p>
+            <button onClick={() => setSubmitted(false)}>Back to Home</button>
+          </div>
+        </div>
       ) : (
         <div className="home">
           {/* <FeaturedCollection collection={data.featuredCollection} /> */}
           {/* <RecommendedProducts products={data.recommendedProducts} /> */}
+
           <div className="prod-img">
             <img src={selectedColor == 'black' ? sweater : sweater2} />
           </div>
@@ -109,6 +133,9 @@ export default function Homepage() {
           <Form
             selectedColor={selectedColor}
             handleCircleClick={handleCircleClick}
+            publicKey={data.publicKey}
+            privateKey={data.privateKey}
+            setSubmitted={setSubmitted}
           />
         </div>
       )}
@@ -122,7 +149,13 @@ export default function Homepage() {
  * }}
  */
 
-function Form({selectedColor, handleCircleClick}) {
+function Form({
+  selectedColor,
+  handleCircleClick,
+  publicKey,
+  privateKey,
+  setSubmitted,
+}) {
   const [fullName, setFullName] = useState('');
   const [address, setAddress] = useState('');
   const [apartment, setApartment] = useState('');
@@ -137,9 +170,17 @@ function Form({selectedColor, handleCircleClick}) {
     setSelectedSize(size === selectedSize ? '' : size);
   };
 
+  emailjs.init({
+    publicKey: publicKey,
+    privateKey: privateKey, // optional, highly recommended for security reasons
+  });
+
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    const btn = document.querySelector('.reserve-btn');
+    console.log(btn, btn.nextSibling, btn.nextSibling);
+    btn.nextSibling.classList.add('progress-bar');
     // Prepare form data
     const formData = {
       fullName,
@@ -156,17 +197,40 @@ function Form({selectedColor, handleCircleClick}) {
     console.log(formData); // For testing: Log form data
 
     // Process form data here (e.g., send it to backend)
-    // Reset form fields after submission if needed
-    // setFullName('');
-    // setAddress('');
-    // setApartment('');
-    // setCity('');
-    // setState('');
-    // setZipCode('');
-    // setEmail('');
-    // setPhoneNumber('');
-    // setSelectedSize('');
-    // setSelectedColor(null)
+    emailjs
+      .send('service_07ghhgi', 'template_ibx153g', {
+        fullName: fullName,
+        address: address,
+        apt: apartment,
+        city: city,
+        state: state,
+        zipCode: zipCode,
+        email: email,
+        phoneNumber: phoneNumber,
+        selectedSize: selectedSize,
+        selectedColor: selectedColor,
+      })
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          btn.nextSibling.nextSibling.classList.add('complete');
+          setTimeout(() => setSubmitted(true), 250);
+          // Reset form fields after submission if needed
+          setFullName('');
+          setAddress('');
+          setApartment('');
+          setCity('');
+          setState('');
+          setZipCode('');
+          setEmail('');
+          setPhoneNumber('');
+          setSelectedSize('');
+          handleCircleClick(null);
+        },
+        (err) => {
+          console.log('FAILED...', err);
+        },
+      );
   };
 
   return (
@@ -231,7 +295,6 @@ function Form({selectedColor, handleCircleClick}) {
             placeholder="Apartment"
             value={apartment}
             onChange={(e) => setApartment(e.target.value)}
-            required
           />
         </div>
         <div className="state-zip-city">
@@ -292,7 +355,29 @@ function Form({selectedColor, handleCircleClick}) {
           />
         </div>
 
-        <button type="submit">Reserve</button>
+        <div style={{position: 'relative'}}>
+          <button className="reserve-btn" type="submit">
+            Reserve
+          </button>
+          <div
+            style={{
+              position: 'absolute',
+              background: 'black',
+              zIndex: -2,
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              background: 'white',
+              zIndex: -1,
+              top: '-1px',
+              bottom: '-1px',
+              left: '95%',
+              right: '-1px',
+            }}
+          />
+        </div>
       </form>
     </div>
   );

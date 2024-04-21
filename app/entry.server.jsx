@@ -15,7 +15,13 @@ export default async function handleRequest(
   responseHeaders,
   remixContext,
 ) {
-  const {nonce, header, NonceProvider} = createContentSecurityPolicy();
+  const {nonce, header, NonceProvider} = createContentSecurityPolicy({
+    connectSrc: [
+      "'self'",
+      'https://cdn.shopify.com',
+      'https://api.emailjs.com/api/v1.0/email/send',
+    ],
+  });
 
   const body = await renderToReadableStream(
     <NonceProvider>
