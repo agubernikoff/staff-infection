@@ -214,18 +214,20 @@ function Form({
         (response) => {
           console.log('SUCCESS!', response.status, response.text);
           btn.nextSibling.nextSibling.classList.add('complete');
-          setTimeout(() => setSubmitted(true), 250);
-          // Reset form fields after submission if needed
-          setFullName('');
-          setAddress('');
-          setApartment('');
-          setCity('');
-          setState('');
-          setZipCode('');
-          setEmail('');
-          setPhoneNumber('');
-          setSelectedSize('');
-          handleCircleClick(null);
+          setTimeout(() => {
+            setSubmitted(true);
+            // Reset form fields after submission if needed
+            setFullName('');
+            setAddress('');
+            setApartment('');
+            setCity('');
+            setState('');
+            setZipCode('');
+            setEmail('');
+            setPhoneNumber('');
+            setSelectedSize('');
+            handleCircleClick(null);
+          }, 250);
         },
         (err) => {
           console.log('FAILED...', err);
