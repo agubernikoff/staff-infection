@@ -35,12 +35,21 @@ export default function Homepage() {
   useEffect(() => {
     if (!authenticated) {
       document.body.style.overflow = 'hidden';
+      const viewport = document.querySelector('meta[name=viewport]');
+      viewport.setAttribute(
+        'content',
+        'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0',
+      );
     } else {
       document.body.style.overflow = 'auto';
+      const viewport = document.querySelector('meta[name=viewport]');
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
     }
 
     return () => {
       document.body.style.overflow = 'auto';
+      const viewport = document.querySelector('meta[name=viewport]');
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
     };
   }, [authenticated]);
 
