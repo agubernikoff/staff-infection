@@ -128,9 +128,9 @@ export default function Homepage() {
           </div>
           <div className="product-details">
             <p>
-              Staff is the working class of our favorite places, brands,
-              restaurants, and events. First we are proud to highlight Lucesca -
-              celebrating the beauty of returning home.
+              Staff celebrates the people working at our favorite places,
+              brands, restaurants, and events as well as challenges the idea of
+              what it means to go to work.
             </p>
             <p>
               Heavyweight (13 oz.) Hoodie • Everywhere’s 100% GRS-Certified
