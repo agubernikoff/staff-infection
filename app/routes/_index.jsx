@@ -74,6 +74,12 @@ export default function Homepage() {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleLogin(); // Call handleLogin function when Enter key is pressed
+    }
+  };
+
   // Function to handle circle click
   const handleCircleClick = (color) => {
     setSelectedColor(color === selectedColor ? selectedColor : color);
@@ -88,6 +94,7 @@ export default function Homepage() {
             type="password"
             value={password}
             onChange={handlePasswordChange}
+            onKeyPress={handleKeyPress}
           />
           <button onClick={handleLogin}>Submit</button>
         </div>
