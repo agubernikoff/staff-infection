@@ -13,6 +13,11 @@
   src: url('staff-font.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'staff-bold';
+  src: url('staff-bold.otf') format('opentype');
+}
+
 /*
 * --------------------------------------------------
 * components/Aside
@@ -507,8 +512,7 @@ aside li {
 }
 .price-title > p {
   font-size: 0.75rem;
-  font-family: 'staff-font';
-  font-weight: bolder;
+  font-family: 'staff-bold';
 }
 .login-container .product-details {
   width: auto;
