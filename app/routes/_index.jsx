@@ -132,10 +132,11 @@ export default function Homepage() {
               brands, restaurants, and events as well as challenges the idea of
               what it means to go to work.
             </p>
-            <p>
-              Heavyweight (13 oz.) Hoodie • Everywhere’s 100% GRS-Certified
-              Recycled Cotton
+            <p style={{marginBottom: '0%'}}>
+              • Lightweight (8 oz.) and Heavyweight (13 oz.) Hoodie Options
+              Available
             </p>
+            <p>• Everywhere’s 100% GRS-Certified Recycled Cotton</p>
           </div>
           <Form
             selectedColor={selectedColor}

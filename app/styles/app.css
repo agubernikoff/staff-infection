@@ -566,7 +566,7 @@ aside li {
 }
 
 button {
-  padding: 6px 20px;
+  padding: 7px 20px;
   background-color: #e6e6e6;
   color: #fff;
   border: none;
@@ -625,8 +625,8 @@ button {
 }
 
 input {
-  padding-top: 0.312rem;
-  padding-bottom: 0.312rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
   width: 100%;
   box-sizing: border-box;
   border-radius: none;
@@ -715,7 +715,7 @@ input::placeholder {
 
 .weight-button {
   display: block;
-  padding: 5px;
+  padding: 6px;
   /* margin-bottom: 10px; */
   width: 100%;
   text-align: center;
@@ -726,7 +726,7 @@ input::placeholder {
 
 .size-button {
   display: block;
-  padding: 5px;
+  padding: 6px;
   /* margin-bottom: 10px; */
   width: 60px;
   text-align: center;
