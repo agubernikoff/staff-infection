@@ -34,7 +34,7 @@ export async function loader({context}) {
 export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
-  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedColor, setSelectedColor] = useState('white');
   const [password, setPassword] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
   const [submitted, setSubmitted] = useState(false);
