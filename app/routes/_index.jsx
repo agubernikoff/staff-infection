@@ -124,7 +124,7 @@ export default function Homepage() {
           </div>
           <div className="price-title">
             <p>STAFF x Lucesca Hoodie</p>
-            <p>$85.00 USD</p>
+            {/* <p>$85.00 USD</p> */}
           </div>
           <div className="product-details">
             <p>
@@ -144,6 +144,9 @@ export default function Homepage() {
             privateKey={data.privateKey}
             setSubmitted={setSubmitted}
           />
+          <p className="footer-text">
+            &copy; 2024 Staff Collective, Rights Reserved.
+          </p>
         </div>
       )}
     </>
@@ -172,9 +175,14 @@ function Form({
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
+  const [selectedWeight, setSelectedWeight] = useState('');
 
   const handleSizeClick = (size) => {
     setSelectedSize(size === selectedSize ? '' : size);
+  };
+
+  const handleWeightClick = (weight) => {
+    setSelectedWeight(weight === selectedWeight ? '' : weight);
   };
 
   emailjs.init({
@@ -200,6 +208,7 @@ function Form({
       phoneNumber,
       selectedSize,
       selectedColor,
+      selectedWeight,
     };
     console.log(formData); // For testing: Log form data
 
@@ -216,6 +225,7 @@ function Form({
         phoneNumber: phoneNumber,
         selectedSize: selectedSize,
         selectedColor: selectedColor,
+        selectedWeight: selectedWeight,
       })
       .then(
         (response) => {
@@ -233,6 +243,7 @@ function Form({
             setEmail('');
             setPhoneNumber('');
             setSelectedSize('');
+            setSelectedWeight('');
             handleCircleClick(null);
           }, 250);
         },
@@ -244,6 +255,7 @@ function Form({
 
   return (
     <div className="form-container">
+      <p>Color:</p>
       <form onSubmit={handleSubmit}>
         <div className="toggle-container">
           <div
@@ -259,6 +271,41 @@ function Form({
             onClick={() => handleCircleClick('white')}
           ></div>
         </div>
+        <p
+          style={{
+            fontFamily: 'staff-font',
+            fontSize: '.75rem',
+            marginBottom: '.5rem',
+          }}
+        >
+          Weight:
+        </p>
+        <div className="form-row weight-selector">
+          {/* Weight Buttons */}
+          {['Leightweight 8oz ($80.00)', 'Heavyweight 13oz ($85.00)'].map(
+            (weight) => (
+              <button
+                key={weight}
+                className={`weight-button ${
+                  selectedWeight === weight ? 'selected' : ''
+                }`}
+                onClick={() => handleWeightClick(weight)}
+                type="button" // Prevent button from submitting the form
+              >
+                {weight}
+              </button>
+            ),
+          )}
+        </div>
+        <p
+          style={{
+            fontFamily: 'staff-font',
+            fontSize: '.75rem',
+            marginBottom: '.5rem',
+          }}
+        >
+          Size:
+        </p>
         <div className="form-row size-selector">
           {/* Size Buttons */}
           {['M', 'L', 'XL'].map((size) => (
