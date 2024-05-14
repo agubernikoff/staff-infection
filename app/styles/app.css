@@ -562,11 +562,11 @@ aside li {
 
 .state-zip-city {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 button {
-  padding: 8px 20px;
+  padding: 6px 20px;
   background-color: #e6e6e6;
   color: #fff;
   border: none;
@@ -625,8 +625,8 @@ button {
 }
 
 input {
-  padding-top: 0.35rem;
-  padding-bottom: 0.35rem;
+  padding-top: 0.312rem;
+  padding-bottom: 0.312rem;
   width: 100%;
   box-sizing: border-box;
   border-radius: none;
@@ -658,14 +658,15 @@ input::placeholder {
   border-radius: 50%;
   margin-bottom: 0.75rem;
   cursor: pointer;
-  border: 1px solid black;
 }
 
 .circle.selected-black {
   background-color: black;
+  border: 1px solid black;
 }
 .circle.selected-white {
   background-color: #f3f2e5;
+  border: 1px solid black;
 }
 
 .circle.white {
@@ -689,7 +690,7 @@ input::placeholder {
   border: none;
   display: flex;
   justify-content: space-between;
-  width: 60%;
+  width: 45%;
   margin: auto;
   gap: 0.5rem;
   margin-bottom: 15%;

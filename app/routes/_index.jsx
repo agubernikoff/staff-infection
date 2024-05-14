@@ -260,15 +260,15 @@ function Form({
         <div className="toggle-container">
           <div
             className={`circle ${
-              selectedColor === 'black' ? 'selected-black' : 'black'
-            }`}
-            onClick={() => handleCircleClick('black')}
-          ></div>
-          <div
-            className={`circle ${
               selectedColor === 'white' ? 'selected-white' : 'white'
             }`}
             onClick={() => handleCircleClick('white')}
+          ></div>
+          <div
+            className={`circle ${
+              selectedColor === 'black' ? 'selected-black' : 'black'
+            }`}
+            onClick={() => handleCircleClick('black')}
           ></div>
         </div>
         <p
