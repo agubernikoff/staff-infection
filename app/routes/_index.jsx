@@ -298,7 +298,7 @@ function Form({
         </p>
         <div className="form-row weight-selector">
           {/* Weight Buttons */}
-          {['Leightweight 8oz ($80.00)', 'Heavyweight 13oz ($85.00)'].map(
+          {['Lightweight 8oz ($80.00)', 'Heavyweight 13oz ($85.00)'].map(
             (weight) => (
               <button
                 key={weight}
