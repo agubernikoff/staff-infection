@@ -3,6 +3,7 @@ import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Image, Money} from '@shopify/hydrogen';
 import sweater from '../assets/sweater.png';
 import sweater2 from '../assets/sweater2.png';
+import socialSharingImage from '../assets/01_Social-Sharing-Image-Preview.png';
 import React, {useState, useEffect, Suspense} from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -10,7 +11,16 @@ import emailjs from '@emailjs/browser';
  * @type {MetaFunction}
  */
 export const meta = () => {
-  return [{title: 'Hydrogen | Home'}];
+  return [
+    {
+      title: 'STAFF',
+      description:
+        'Staff celebrates the people working at our favorite places, brands, restaurants, and events as well as challenges the idea of what it means to go to work.',
+      'og:description':
+        'Staff celebrates the people working at our favorite places, brands, restaurants, and events as well as challenges the idea of what it means to go to work.',
+      'og:image': socialSharingImage,
+    },
+  ];
 };
 
 /**
