@@ -14,12 +14,17 @@ export const meta = () => {
   return [
     {
       title: 'STAFF',
+    },
+    {
       description:
         'Staff celebrates the people working at our favorite places, brands, restaurants, and events as well as challenges the idea of what it means to go to work.',
-      'og:description':
-        'Staff celebrates the people working at our favorite places, brands, restaurants, and events as well as challenges the idea of what it means to go to work.',
-      'og:image': socialSharingImage,
     },
+    {
+      property: 'og:description',
+      content:
+        'Staff celebrates the people working at our favorite places, brands, restaurants, and events as well as challenges the idea of what it means to go to work.',
+    },
+    {property: 'og:image', content: socialSharingImage},
   ];
 };
 
