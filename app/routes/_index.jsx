@@ -230,7 +230,7 @@ function Form({
 
     // Process form data here (e.g., send it to backend)
     emailjs
-      .send('service_07ghhgi', 'template_ibx153g', {
+      .send('service_4kp1j9i', 'template_rhkz87l', {
         fullName: fullName,
         address: address,
         apt: apartment,
