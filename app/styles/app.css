@@ -576,6 +576,11 @@ button {
   font-size: 0.75rem;
   font-family: 'staff-font';
 }
+.reserve-btn {
+  font-size: 0.75rem;
+  font-family: 'staff-font';
+}
+
 .progress-bar {
   animation: progress 0.75s linear forwards;
 }
